@@ -55,7 +55,17 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
             Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
-            mWordViewModel.insert(word);
+            if (word.getWord() != null && !word.getWord().isEmpty()){
+                mWordViewModel.insert(word);
+            } else {
+                mWordViewModel.clear();
+                Toast.makeText(
+                        getApplicationContext(),
+                        R.string.remove_all_words,
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+
         } else {
             Toast.makeText(
                     getApplicationContext(),

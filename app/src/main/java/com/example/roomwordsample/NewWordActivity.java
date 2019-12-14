@@ -35,5 +35,14 @@ public class NewWordActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        final Button buttonClear = findViewById(R.id.button_clear);
+        buttonClear.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent replyIntent = new Intent();
+                setResult(RESULT_OK, replyIntent);
+                finish();
+            }
+        });
     }
 }
